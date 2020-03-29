@@ -114,7 +114,9 @@ f2 = k
 print("f1:" + str(f1))
 print("f2:" + str(f2))
 
-Gcr = round(cochran(f1, f2, 0.05), 4)
+alpha = 0.05
+
+Gcr = round(cochran(f1, f2, alpha), 4)
 print("Gcr: " + str(Gcr))
 if Gp < Gcr:
     print("Cochran's C: OK")
@@ -129,7 +131,7 @@ Sb = round(math.sqrt(S2b), 3)
 
 f3 = f1 * f2
 print("f3: " + str(f3))
-t = round(t.ppf(1-0.05 / 2, df=f3), 3)
+t = round(t.ppf(1-alpha / 2, df=f3), 3)
 print("t: " + str(t))
 bs = []
 ts = []
@@ -165,7 +167,7 @@ S2ad = round(m * sum([(yj[i] - yi[i])**2 for i in range(4)])/f4, 3)
 
 Fp = round(S2ad/S2v, 3)
 print("Fp: " + str(Fp))
-Fcr = round(f.ppf(1 - 0.05, f4, f3), 1)
+Fcr = round(f.ppf(1 - alpha, f4, f3), 1)
 print("Fcr: " + str(Fcr))
 if Fp < Fcr:
     print("F-criteria: OK")
